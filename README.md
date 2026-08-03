@@ -9,6 +9,8 @@
 - [Linux](./docs/linux/)
 - [MySQL](./docs/mysql/)
 - [PowerShell](./docs/powershell/)
+- [Rust](./docs/rust/)
+- [Go](./docs/go/)
 
 ## 🎯 Objetivo
 
