@@ -225,10 +225,10 @@ yarn-error.log*
 * `.gitignore global`
 
 ```bash
-## Criar .gitignore global`
+# Criar .gitignore global
 git config --global core.excludesfile ~/.gitignore_global
 
-## Adicionar arquivos comuns
+# Adicionar arquivos comuns
 echo ".DS_Store" >> ~/.gitignore_global
 echo "Thumbs.db" >> ~/.gitignore_global
 echo "*.log" >> ~/.gitignore_global
@@ -291,8 +291,9 @@ git rebase -i HEAD~3
 - Em branches públicas/compartilhadas
 - Em branches que outras pessoas estão usando
 - Quando não tem certeza do que está fazendo
-🔍 Revisão de Código (Pull Requests)
 ```
+
+## 🔍 Revisão de Código (Pull Requests)
 
 * `Boas práticas de PR`
 
@@ -366,8 +367,11 @@ git commit -m "feat: implementa nova funcionalidade"
 git push -u origin feature/nova-funcionalidade
 
 # Criar PR para develop
-Hotfix em produção
-bash
+```
+
+* `Hotfix em produção`
+
+```bash
 # Correção urgente
 git checkout main
 git pull
@@ -379,8 +383,10 @@ git commit -m "fix: corrige bug crítico"
 git push -u origin hotfix/corrige-bug
 
 # Criar PR para main e depois merge para develop
+```
 
 ## 🛠️ Ferramentas Úteis
+
 * `Git Aliases úteis`
 
 ```bash

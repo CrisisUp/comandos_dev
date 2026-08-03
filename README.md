@@ -8,12 +8,7 @@
 - [Docker](./docs/docker/)
 - [Linux](./docs/linux/)
 - [MySQL](./docs/mysql/)
-- [PostgreSQL](./docs/postgresql/)
 - [PowerShell](./docs/powershell/)
-- [AWS](./docs/aws/)
-- [Terraform](./docs/terraform/)
-- [Ansible](./docs/ansible/)
-- [Kubernetes](./docs/kubernetes/)
 
 ## 🎯 Objetivo
 
@@ -31,7 +26,7 @@ Centralizar e organizar comandos úteis para consulta rápida, ajudando desenvol
 
 1. Faça um fork do projeto
 2. Crie uma branch: `git checkout -b minha-contribuicao`
-3. Adicione seus comandos seguindo o [template](./templates/template-comando.md)
+3. Adicione seus comandos seguindo o formato descrito em [Formato dos comandos](#formato-dos-comandos)
 4. Commit: `git commit -m 'Adiciona comandos XYZ'`
 5. Push: `git push origin minha-contribuicao`
 6. Abra um Pull Request

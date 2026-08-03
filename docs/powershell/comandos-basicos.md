@@ -55,7 +55,7 @@ cd ..          # Voltar um diretório
 cd -           # Voltar ao diretório anterior
 ```
 
-## Manipulação de Arquivos
+## 📝 Manipulação de Arquivos
 
 ```powershell
 # Criar arquivo vazio
@@ -96,7 +96,7 @@ rm -rf pasta/
 Test-Path arquivo.txt
 ```
 
-## Diretórios
+## 📂 Diretórios
 
 ```powershell
 # Criar diretórios
@@ -369,8 +369,11 @@ Compress-Archive -Path *.txt -DestinationPath arquivos.zip
 
 # Descompactar
 Expand-Archive -Path arquivo.zip -DestinationPath destino/
-Compactar/Descompactar (COM)
-powershell
+```
+
+### Compactar/Descompactar (COM)
+
+```powershell
 # Usando Shell.Application (alternativa)
 $shell = New-Object -ComObject Shell.Application
 $zip = $shell.NameSpace("C:\caminho\arquivo.zip")
@@ -494,8 +497,11 @@ Set-Alias disk Get-Disk
 Set-Alias psg "Get-Process | Where-Object { $_.Name -like '*$args*' }"
 Set-Alias hist Get-History
 Set-Alias tailf Get-Content -Wait
-Aliases para Git
-powershell
+```
+
+### Aliases para Git
+
+```powershell
 Set-Alias gs git status
 Set-Alias ga git add
 Set-Alias gc git commit
@@ -572,4 +578,4 @@ Documentação Oficial do PowerShell
 PowerShell Cheat Sheet
 PowerShell GitHub
 
-## Pronto para usar PowerShell com confiança! 🖥️🚀
+Pronto para usar PowerShell com confiança! 🖥️🚀

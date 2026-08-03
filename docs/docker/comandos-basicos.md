@@ -36,8 +36,11 @@ docker run -w /app nginx
 # Executar em modo interativo (com shell)
 docker run -it ubuntu bash
 docker run -it python:3.12 /bin/bash
-Gerenciar containers em execução
-bash
+```
+
+### Gerenciar containers em execução
+
+```bash
 # Listar containers em execução
 docker ps
 
@@ -73,8 +76,11 @@ docker unpause container_name_or_id
 
 # Aguardar container terminar
 docker wait container_name_or_id
-Remover containers
-bash
+```
+
+### Remover containers
+
+```bash
 # Remover um container parado
 docker rm container_name_or_id
 
@@ -86,9 +92,13 @@ docker container prune
 
 # Remover todos os containers (parados e em execução)
 docker rm -f $(docker ps -aq)
-📦 Gerenciamento de Imagens
-Listar imagens
-bash
+```
+
+## 📦 Gerenciamento de Imagens
+
+### Listar imagens
+
+```bash
 # Listar imagens locais
 docker images
 
@@ -100,8 +110,11 @@ docker images -q
 
 # Listar imagens intermediárias
 docker images -a
-Baixar imagens
-bash
+```
+
+### Baixar imagens
+
+```bash
 # Baixar imagem do Docker Hub
 docker pull nginx
 docker pull nginx:latest
@@ -115,8 +128,11 @@ docker pull registry.digitalocean.com/meu-registro/imagem:tag
 
 # Baixar imagem sem verificar assinatura
 docker pull --disable-content-trust nginx
-Construir imagens
-bash
+```
+
+### Construir imagens
+
+```bash
 # Construir imagem a partir do Dockerfile na pasta atual
 docker build -t minha-imagem .
 
@@ -134,8 +150,11 @@ docker build --build-arg VARIAVEL=valor -t minha-imagem .
 
 # Construir com target específico (multi-stage)
 docker build --target builder -t minha-imagem .
-Remover imagens
-bash
+```
+
+### Remover imagens
+
+```bash
 # Remover imagem específica
 docker rmi imagem_id_ou_nome
 
@@ -150,8 +169,11 @@ docker image prune -a -f
 
 # Remover imagens com padrão
 docker rmi $(docker images | grep "padrao" | awk '{print $3}')
-Tag e push
-bash
+```
+
+### Tag e push
+
+```bash
 # Criar tag para imagem
 docker tag minha-imagem:1.0.0 meu-usuario/minha-imagem:1.0.0
 
@@ -166,9 +188,13 @@ docker push meu-usuario/minha-imagem:1.0.0
 
 # Enviar todas as tags
 docker push --all-tags meu-usuario/minha-imagem
-🔍 Inspeção e Debug
-Logs
-bash
+```
+
+## 🔍 Inspeção e Debug
+
+### Logs
+
+```bash
 # Ver logs de um container
 docker logs container_name_or_id
 
@@ -186,8 +212,11 @@ docker logs --since 2024-01-01T10:00:00 container_name_or_id
 
 # Ver logs de um intervalo
 docker logs --since 10m container_name_or_id
-Executar comandos
-bash
+```
+
+### Executar comandos
+
+```bash
 # Executar comando no container em execução
 docker exec container_name_or_id comando
 
@@ -204,7 +233,7 @@ docker exec -e VARIAVEL=valor container_name_or_id comando
 docker exec -u usuario container_name_or_id comando
 ```
 
-* `Inspecionar`
+### Inspecionar
 
 ```bash
 # Ver detalhes do container
@@ -230,7 +259,7 @@ docker stats --no-stream
 docker diff container_name_or_id
 ```
 
-* `Copiar arquivos`
+### Copiar arquivos
 
 ```bash
 # Copiar do host para o container
@@ -243,9 +272,9 @@ docker cp container_name_or_id:/container/arquivo.txt /host/caminho/
 docker cp /host/pasta container_name_or_id:/container/pasta/
 ```
 
-### 🌐 Redes
+## 🌐 Redes
 
-* `Gerenciar redes`
+### Gerenciar redes
 
 ```bash
 # Listar redes
@@ -270,7 +299,7 @@ docker network rm minha-rede
 docker network prune
 ```
 
-* `Conectar containers`
+### Conectar containers
 
 ```bash
 # Conectar container a uma rede
@@ -283,9 +312,9 @@ docker network disconnect minha-rede container_name
 docker run -d --network minha-rede nginx
 ```
 
-### 💾 Volumes
+## 💾 Volumes
 
-* `Gerenciar volumes`
+### Gerenciar volumes
 
 ```bash
 # Listar volumes
@@ -304,7 +333,7 @@ docker volume rm meu-volume
 docker volume prune
 ```
 
-* `Usar volumes`
+### Usar volumes
 
 ```bash
 # Montar volume em container
@@ -324,9 +353,9 @@ docker run --mount type=volume,source=meu-volume,target=/app nginx
 docker run --mount type=bind,source=/host/pasta,target=/app nginx
 ```
 
-### 🧹 Limpeza
+## 🧹 Limpeza
 
-* `Comandos de limpeza`
+### Comandos de limpeza
 
 ```bash
 # Remover containers parados
@@ -354,9 +383,9 @@ docker system prune -a -f
 docker system df
 ```
 
-### 📝 Aliases Úteis
+## 📝 Aliases Úteis
 
-* `Criar aliases no ~/.zshrc`
+### Criar aliases no ~/.zshrc
 
 ```bash
 # Aliases para Docker
@@ -382,7 +411,7 @@ alias dcl="docker-compose logs -f"
 alias dcexec="docker-compose exec"
 ```
 
-🆘 Ajuda
+## 🆘 Ajuda
 
 ```bash
 # Ajuda geral
@@ -394,7 +423,7 @@ docker build --help
 docker ps --help
 ```
 
-### 📋 Checklist Diário
+## 📋 Checklist Diário
 
 | Comando | Descrição |
 | ------- | --------- |
@@ -406,7 +435,7 @@ docker ps --help
 | `docker images` | Ver imagens locais |
 | `docker system df` | Ver uso de espaço |
 
-### 🎯 Resumo dos Comandos
+## 🎯 Resumo dos Comandos
 
 | Categoria | Comando | Descrição |
 | --------- | ------- | --------- |
@@ -428,26 +457,8 @@ docker ps --help
 | **Volume** | `docker volume` | Gerenciar volumes |
 | **Limpeza** | `docker system prune` | Limpar tudo |
 
-### 📚 Referências
+## 📚 Referências
 
 * Documentação Oficial do Docker
 * Docker CLI Reference
 * Dockerfile Reference
-
----
-
-## 📂 **Como salvar o arquivo**
-
-```bash
-# Criar a pasta docker se não existir
-mkdir -p ~/Desktop/comandos_dev/docs/docker
-
-# Salvar o arquivo
-nano ~/Desktop/comandos_dev/docs/docker/comandos-basicos.md
-
-# Colar o conteúdo acima
-# Salvar: Ctrl+O, Enter
-# Sair: Ctrl+X
-```
-
-### Pronto para usar Docker com confiança! 🐳🚀

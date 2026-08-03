@@ -90,8 +90,11 @@ DROP DATABASE nome_banco;
 
 -- Remover banco se existir
 DROP DATABASE IF EXISTS nome_banco;
-Informações do banco
-sql
+```
+
+### Informações do banco
+
+```sql
 -- Ver informações do banco
 SELECT * FROM information_schema.SCHEMATA;
 
@@ -325,8 +328,11 @@ HAVING total > 5;
 SELECT cidade, status, COUNT(*) 
 FROM usuarios 
 GROUP BY cidade, status;
-Funções de agregação
-sql
+```
+
+### Funções de agregação
+
+```sql
 -- Contar registros
 SELECT COUNT(*) FROM usuarios;
 SELECT COUNT(id) FROM usuarios;
@@ -391,7 +397,7 @@ GROUP BY u.id;
 
 ### 📝 Atualização (UPDATE)
 
-Atualizar dados
+* `Atualizar dados`
 
 ```sql
 -- Atualizar com condição
@@ -467,8 +473,11 @@ INNER JOIN pedidos p ON u.id = p.usuario_id;
 SELECT u.nome AS Cliente, p.produto, p.valor
 FROM usuarios u
 JOIN pedidos p ON u.id = p.usuario_id;
-LEFT JOIN
-sql
+```
+
+### LEFT JOIN
+
+```sql
 -- Left Join (todos os usuários, com ou sem pedidos)
 SELECT u.nome, COUNT(p.id) AS total_pedidos
 FROM usuarios u
@@ -479,14 +488,20 @@ GROUP BY u.id;
 SELECT u.nome, p.produto
 FROM usuarios u
 LEFT JOIN pedidos p ON u.id = p.usuario_id AND p.status = 'confirmado';
-RIGHT JOIN
-sql
+```
+
+### RIGHT JOIN
+
+```sql
 -- Right Join (todos os pedidos, mesmo sem usuário)
 SELECT u.nome, p.produto
 FROM usuarios u
 RIGHT JOIN pedidos p ON u.id = p.usuario_id;
-FULL OUTER JOIN (MySQL não tem nativamente)
-sql
+```
+
+### FULL OUTER JOIN (MySQL não tem nativamente)
+
+```sql
 -- Simular FULL OUTER JOIN
 SELECT u.nome, p.produto
 FROM usuarios u
@@ -495,8 +510,11 @@ UNION
 SELECT u.nome, p.produto
 FROM usuarios u
 RIGHT JOIN pedidos p ON u.id = p.usuario_id;
-SELF JOIN
-sql
+```
+
+### SELF JOIN
+
+```sql
 -- Relacionamento hierárquico (funcionários com gerentes)
 SELECT f.nome AS Funcionario, g.nome AS Gerente
 FROM funcionarios f
@@ -556,8 +574,11 @@ SELECT TRIM(nome) FROM usuarios;
 
 -- Extrair parte
 SELECT LEFT(nome, 3), RIGHT(nome, 3) FROM usuarios;
-Data/Hora
-sql
+```
+
+### Data/Hora
+
+```sql
 -- Data atual
 SELECT CURDATE();
 SELECT CURRENT_DATE();
@@ -669,13 +690,17 @@ mysql -u usuario -p -D outro_banco < backup.sql
 gunzip -c backup.sql.gz | mysql -u usuario -p nome_banco
 ```
 
-## Importar CSV (via mysql)
+* `Importar CSV (via mysql)`
 
+```bash
 mysql -u usuario -p -e "LOAD DATA INFILE '/caminho/arquivo.csv' INTO TABLE nome_tabela FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;"
+```
 
-## Importar CSV (via linha de comando)
+* `Importar CSV (via linha de comando)`
 
+```bash
 mysqlimport -u usuario -p --fields-terminated-by=',' nome_banco arquivo.csv
+```
 
 * `Importar via SQL`
 
@@ -799,19 +824,3 @@ MySQL 8.0 Reference Manual
 MySQL Cheat Sheet
 
 Pronto para usar MySQL com confiança! 🐬🚀
-
----
-
-## 📂 **Como salvar o arquivo**
-
-```bash
-# Criar a pasta mysql se não existir
-mkdir -p ~/Desktop/comandos_dev/docs/mysql
-
-# Salvar o arquivo
-nano ~/Desktop/comandos_dev/docs/mysql/comandos-basicos.md
-
-# Colar o conteúdo acima
-# Salvar: Ctrl+O, Enter
-# Sair: Ctrl+X
-```

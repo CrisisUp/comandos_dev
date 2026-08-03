@@ -38,7 +38,7 @@ rmdir pasta            # Remove diretório vazio
 rm -rf pasta           # Remove diretório e conteúdo (CUIDADO!)
 ```
 
-## Manipulação de Arquivos
+## 📝 Manipulação de Arquivos
 
 ```bash
 
@@ -160,7 +160,7 @@ sudo chown usuario arquivo.txt
 sudo chgrp grupo arquivo.txt
 ```
 
-## Permissões numéricas
+## 🔢 Permissões numéricas
 
 ```bash
 
@@ -293,8 +293,11 @@ ps -ef | grep comando
 # Ver processos em tempo real
 htop
 top
-Top - Comandos interativos
-bash
+```
+
+### Top - Comandos interativos
+
+```bash
 top  # Inicia o top
 # Atalhos:
 # h - Ajuda
@@ -307,7 +310,7 @@ top  # Inicia o top
 # 1 - Mostrar todos os CPUs
 ```
 
-Gerenciar processos
+* `Gerenciar processos`
 
 ```bash
 # Matar processos
@@ -413,8 +416,11 @@ tar -xjvf arquivo.tar.bz2
 
 # Ver conteúdo
 tar -tvf arquivo.tar
-Zip/Unzip
-bash
+```
+
+### Zip/Unzip
+
+```bash
 # Compactar
 zip arquivo.zip arquivo.txt
 zip -r pasta.zip pasta/
@@ -425,8 +431,11 @@ unzip arquivo.zip -d destino/
 
 # Ver conteúdo
 unzip -l arquivo.zip
-Gzip/Gunzip
-bash
+```
+
+### Gzip/Gunzip
+
+```bash
 # Compactar
 gzip arquivo.txt       # Cria arquivo.txt.gz
 
@@ -455,7 +464,7 @@ alias
 export VARIAVEL=valor
 echo $VARIAVEL
 env               # Ver todas as variáveis
-````
+```
 
 ## 🆘 Ajuda
 
@@ -553,4 +562,4 @@ Linux Command Line
 
 TLDR Pages - Comandos simplificados
 
-## Pronto para usar Linux com confiança! 🐧🚀
+Pronto para usar Linux com confiança! 🐧🚀

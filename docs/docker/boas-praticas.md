@@ -18,6 +18,7 @@ FROM openjdk:17-slim
 FROM node:latest
 FROM python
 FROM ubuntu
+```
 
 ### 2. Ordene os comandos para aproveitar cache
 
@@ -166,7 +167,7 @@ ARG DB_PASSWORD
 ENV DB_PASSWORD=$DB_PASSWORD
 
 # Ou use Docker secrets em produção
-````
+```
 
 ### 2. Use USER não-root
 
@@ -224,10 +225,11 @@ services:
     depends_on:
       db:
         condition: service_healthy
+```
+
 ### 2. Defina limites de recursos
 
 ```yaml
-
 # docker-compose.yml
 services:
   app:
@@ -301,7 +303,7 @@ services:
         max-file: "3"
 ```
 
-#### 3. Adicione labels para organização
+### 3. Adicione labels para organização
 
 ```yaml
 # docker-compose.yml
@@ -314,9 +316,9 @@ services:
       - "com.example.version=1.0.0"
 ```
 
-### 🔄 CI/CD
+## 🔄 CI/CD
 
-#### 1. Use build cache
+### 1. Use build cache
 
 ```yaml
 # GitHub Actions
@@ -328,7 +330,7 @@ services:
     cache-to: type=gha,mode=max
 ```
 
-#### 2. Verifique tamanho da imagem
+### 2. Verifique tamanho da imagem
 
 ```yaml
 # GitHub Actions
@@ -341,7 +343,7 @@ services:
     fi
 ```
 
-#### 3. Execute testes antes do build
+### 3. Execute testes antes do build
 
 ```yaml
 # GitHub Actions
@@ -351,7 +353,7 @@ services:
     docker run test-image npm test
 ```
 
-### 🛠️ Comandos Úteis
+## 🛠️ Comandos Úteis
 
 * `Limpeza`
 
@@ -399,40 +401,33 @@ docker cp arquivo.txt container_name:/app/
 docker diff container_name
 ```
 
-### 📋 Checklist
+## 📋 Checklist
 
-```bash
-- Usa imagem oficial e específica
-- Use multi-stage builds (quando aplicável)
-- Ordena comandos para aproveitar cache
-- Usa usuário não-root
-- Tem .dockerignore
-- Não contém secrets
-- Combina RUN commands
-- Usa imagem pequena (slim/alpine)
-```
+* `Dockerfile`
+  - Usa imagem oficial e específica
+  - Usa multi-stage builds (quando aplicável)
+  - Ordena comandos para aproveitar cache
+  - Usa usuário não-root
+  - Tem .dockerignore
+  - Não contém secrets
+  - Combina RUN commands
+  - Usa imagem pequena (slim/alpine)
 
-```bash
- * `Docker Compose`
+* `Docker Compose`
+  - Define health checks
+  - Limita recursos
+  - Usa variáveis de ambiente
+  - Configura volumes persistentes
+  - Configura logging adequado
+  - Adiciona labels
 
- - Define health checks
- - Limita recursos
- - Usa variáveis de ambiente
- - Configura volumes persistentes
- - Configura logging adequado
- - Adiciona labels
-```
-
-```bash
 * `Segurança`
+  - Escaneia vulnerabilidades
+  - Remove pacotes desnecessários
+  - Usa read-only filesystem (quando possível)
+  - Mantém imagens atualizadas
 
-* Escaneia vulnerabilidades
-* Remove pacotes desnecessários
-* Usa read-only filesystem (quando possível)
-* Mantém imagens atualizadas
-```
-
-### 🎯 Resumo
+## 🎯 Resumo
 
 | Prática | Recomendação |
 | ------- | ------------ |
@@ -446,27 +441,9 @@ docker diff container_name
 | Logs | stdout/stderr |
 | Recursos | Limitar CPU/Memória |
 
-### 📚 Referências
+## 📚 Referências
 
 * Dockerfile Best Practices
 * Docker Security Best Practices
 * Docker Compose Best Practices
 * Docker Optimization
-
----
-
-### 📂 **Como salvar o arquivo**
-
-```bash
-# Criar a pasta docker se não existir
-mkdir -p ~/Desktop/comandos_dev/docs/docker
-
-# Salvar o arquivo
-nano ~/Desktop/comandos_dev/docs/docker/boas-praticas.md
-
-# Colar o conteúdo acima
-# Salvar: Ctrl+O, Enter
-# Sair: Ctrl+X
-```
-
-### Pronto para usar Docker como um profissional! 🐳🚀

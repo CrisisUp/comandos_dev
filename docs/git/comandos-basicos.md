@@ -139,12 +139,12 @@ git commit arquivo1.txt arquivo2.txt -m "Mensagem"
 # Modificar último commit (mensagem)
 git commit --amend -m "Nova mensagem"
 
-## Adicionar arquivos ao último commit
+# Adicionar arquivos ao último commit
 
 git add arquivo-esquecido.txt
 git commit --amend
 
-## Modificar último commit sem mudar mensagem
+# Modificar último commit sem mudar mensagem
 
 git commit --amend --no-edit
 ```
@@ -411,4 +411,4 @@ git add . - Adicione suas alterações
 git commit -m "mensagem" - Crie um commit
 git pull - Atualize sua branch
 git push - Envie para o remoto
-````
+```
