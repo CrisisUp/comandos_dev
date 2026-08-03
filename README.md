@@ -11,6 +11,7 @@
 - [PowerShell](./docs/powershell/)
 - [Rust](./docs/rust/)
 - [Go](./docs/go/)
+- [Python](./docs/python/)
 
 ## 🎯 Objetivo
 
