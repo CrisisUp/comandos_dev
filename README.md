@@ -8,10 +8,15 @@
 - [Docker](./docs/docker/)
 - [Linux](./docs/linux/)
 - [MySQL](./docs/mysql/)
+- [PostgreSQL](./docs/postgresql/)
 - [PowerShell](./docs/powershell/)
 - [Rust](./docs/rust/)
 - [Go](./docs/go/)
 - [Python](./docs/python/)
+- [AWS](./docs/aws/)
+- [Kubernetes](./docs/kubernetes/)
+- [Ansible](./docs/ansible/)
+- [Terraform](./docs/terraform/)
 
 ## 🎯 Objetivo
 
