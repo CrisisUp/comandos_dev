@@ -59,7 +59,7 @@ git reset --hard HEAD@{1}
 git stash
 git stash push -m "mensagem descritiva"
 
-# Guardar apenas arquivos rastreados
+# Guardar também arquivos não rastreados
 git stash push -u
 
 # Listar stashes

@@ -242,6 +242,8 @@ services:
         reservations:
           cpus: '0.25'
           memory: 256M
+# ⚠️ deploy.resources só é aplicado no modo Swarm
+# (docker stack deploy); em compose local é ignorado.
 ```
 
 ### 3. Use variáveis de ambiente
@@ -336,9 +338,9 @@ services:
 # GitHub Actions
 - name: Check image size
   run: |
-    IMAGE_SIZE=$(docker images minha-app --format "{{.Size}}")
-    echo "Image size: $IMAGE_SIZE"
-    if [[ $IMAGE_SIZE > "500MB" ]]; then
+    IMAGE_BYTES=$(docker image inspect minha-app --format "{{.Size}}")
+    echo "Image size: $IMAGE_BYTES bytes"
+    if [ "$IMAGE_BYTES" -gt 524288000 ]; then   # > 500MB (500 * 1024^2)
       echo "⚠️ Image is larger than 500MB!"
     fi
 ```

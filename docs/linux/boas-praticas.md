@@ -147,7 +147,7 @@ ss -tulpn
 netstat -tulpn
 
 # Verificar conectividade
-ping -c 4
+ping -c 4 host
 nc -zv host porta
 dig +short host
 ```

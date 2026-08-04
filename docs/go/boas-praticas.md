@@ -36,8 +36,9 @@ package service
 ```bash
 # ✅ gofmt resolve a maioria das divergências
 gofmt -w .
-# Em CI: verificar que nada diverge
-gofmt -l . && go vet ./...
+# Em CI: gofmt -l sai com código 0 mesmo com divergências;
+# use uma checagem explícita:
+test -z "$(gofmt -l .)" && go vet ./...
 ```
 
 * `Nomes idiomáticos`

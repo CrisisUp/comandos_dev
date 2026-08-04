@@ -693,13 +693,17 @@ gunzip -c backup.sql.gz | mysql -u usuario -p nome_banco
 * `Importar CSV (via mysql)`
 
 ```bash
+# LOAD DATA INFILE é lido no lado do servidor: requer privilégio FILE
+# e o arquivo deve estar em área liberada por secure_file_priv
 mysql -u usuario -p -e "LOAD DATA INFILE '/caminho/arquivo.csv' INTO TABLE nome_tabela FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;"
 ```
 
 * `Importar CSV (via linha de comando)`
 
 ```bash
-mysqlimport -u usuario -p --fields-terminated-by=',' nome_banco arquivo.csv
+# O nome do arquivo define a tabela (arquivo.csv -> tabela "arquivo");
+# use --local quando o arquivo está no cliente (não no servidor)
+mysqlimport -u usuario -p --local --fields-terminated-by=',' nome_banco usuarios.csv
 ```
 
 * `Importar via SQL`

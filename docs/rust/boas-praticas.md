@@ -225,7 +225,7 @@ meu-crate/
 | Perf | Prelocação, iterators |
 | Testes | `#[test]` junto ao código |
 | Ferramentas | Clippy + fmt no CI |
-| Dependências | Verificar com `cargo deny` |
+| Dependências | Verificar com `cargo deny` (cargo install cargo-deny) |
 
 ## 📚 Referências
 

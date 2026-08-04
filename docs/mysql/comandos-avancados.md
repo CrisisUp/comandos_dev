@@ -265,21 +265,22 @@ DROP EVENT IF EXISTS diario_limpeza;
 ```sql
 -- No master: criar usuário de replicação
 CREATE USER 'repl'@'%' IDENTIFIED BY 'senha';
-GRANT REPLICATION SLAVE ON *.* TO 'repl'@'%';
+-- MySQL 8.0.22+: use REPLICATION_SLAVE_ADMIN (REPLICATION SLAVE é deprecado)
+GRANT REPLICATION_SLAVE_ADMIN ON *.* TO 'repl'@'%';
 
--- Ver arquivo e posição binlog
-SHOW MASTER STATUS;
+-- Ver arquivo e posição binlog (MySQL 8: SHOW BINARY LOG STATUS)
+SHOW BINARY LOG STATUS;
 
--- Na replica: configurar origem
-CHANGE MASTER TO
-  MASTER_HOST='192.168.1.10',
-  MASTER_USER='repl',
-  MASTER_PASSWORD='senha',
-  MASTER_LOG_FILE='mysql-bin.000001',
-  MASTER_LOG_POS=154;
+-- Na replica: configurar origem (MySQL 8: CHANGE REPLICATION SOURCE TO)
+CHANGE REPLICATION SOURCE TO
+  SOURCE_HOST='192.168.1.10',
+  SOURCE_USER='repl',
+  SOURCE_PASSWORD='senha',
+  SOURCE_LOG_FILE='mysql-bin.000001',
+  SOURCE_LOG_POS=154;
 
-START SLAVE;
-SHOW SLAVE STATUS\G;
+START REPLICA;
+SHOW REPLICA STATUS\G;
 ```
 
 ## 📤 Backup e Restauração Avançada

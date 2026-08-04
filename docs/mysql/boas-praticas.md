@@ -15,9 +15,9 @@ mysql -u root -p123456 banco
 echo "senha=123" > config.sql
 
 # ✅ Use variáveis de ambiente ou arquivos de config protegidos
-mysql -u usuario -p "$DB_PASS" banco
-# ou
-export MYSQL_PWD="$(cat ~/.my.cnf | grep password)"
+mysql -u usuario -p"$DB_PASS" banco
+# ou use o arquivo de config protegido (senha fora do histórico)
+mysql --defaults-file=~/.my.cnf banco
 ```
 
 ### 2. Senhas fortes e usuários com privilégio mínimo

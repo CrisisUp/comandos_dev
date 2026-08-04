@@ -119,10 +119,12 @@ cargo fmt -- --config tab_spaces=4
 * `Auditoria de dependências`
 
 ```bash
-# Vulnerabilidades
+# Vulnerabilidades (ferramenta de terceiros)
+# cargo install cargo-audit
 cargo audit
 
-# licenças
+# Licenças (ferramenta de terceiros)
+# cargo install cargo-license
 cargo license
 
 # Dependências de dev/regular
@@ -371,7 +373,9 @@ unsafe {
 ```
 
 ```bash
-# Miri - detector de comportamento indefinido
+# Miri - detector de comportamento indefinido (requer componente nightly)
+rustup toolchain install nightly
+rustup component add miri --toolchain nightly
 cargo +nightly miri test
 ```
 

@@ -187,9 +187,12 @@ sudo lvcreate -L 10G -n meu_lv meu_vg
 sudo lvextend -L +5G /dev/meu_vg/meu_lv
 sudo resize2fs /dev/meu_vg/meu_lv
 
-# Reduzir volume lógico
-sudo lvreduce -L -2G /dev/meu_vg/meu_lv
-sudo resize2fs /dev/meu_vg/meu_lv
+# Reduzir volume lógico (sempre reduzir o filesystem ANTES do LV)
+sudo umount /mnt/meu_lv
+sudo e2fsck -f /dev/meu_vg/meu_lv
+sudo resize2fs /dev/meu_vg/meu_lv 8G     # reduz o filesystem para o tamanho alvo
+sudo lvreduce -L 8G /dev/meu_vg/meu_lv   # depois reduz o volume lógico
+sudo mount /mnt/meu_lv
 ```
 
 * `Montagens avançadas`

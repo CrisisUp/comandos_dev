@@ -59,8 +59,8 @@ pip list
 * `Gerenciar ambientes`
 
 ```bash
-# Usar uma versão de Python específica (via venv)
-python3 -m venv --python=python3.11 .venv
+# Usar uma versão específica: chame o python desejado para criar o venv
+python3.11 -m venv .venv
 
 # (gerenciadores avançados: pyenv, uv, poetry, conda)
 ```
@@ -106,7 +106,7 @@ pip uninstall requests
 pip freeze > requirements.txt
 pip freeze --local > requirements.txt
 
-# Conferir dependências de produção apenas
+# Listar dependências de topo (não exigidas por outras)
 pip list --not-required
 ```
 

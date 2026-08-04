@@ -236,8 +236,9 @@ go vet ./...
 go doc fmt.Println
 go doc time.Time
 
-# Abrir docs do módulo no navegador
-go doc -http=:6060
+# Servir docs no navegador (porta padrão :6060; -http é flag booleana)
+go doc -http
+# acesse http://localhost:6060
 
 # Ver docs de um pacote externo
 go doc github.com/gin-gonic/gin

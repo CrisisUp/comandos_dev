@@ -329,13 +329,13 @@ git push --force-with-lease
     # Descartar todas as alterações
     git restore .
 
-    # Desfazer último commit (mantém alterações)
+    # Desfazer último commit mantendo alterações no staging
     git reset --soft HEAD~1
 
     # Desfazer último commit (remove alterações)
     git reset --hard HEAD~1
 
-    # Desfazer commit mantendo no staging
+    # Desfazer commit mantendo alterações fora do staging (padrão)
     git reset --mixed HEAD~1
     ```
 

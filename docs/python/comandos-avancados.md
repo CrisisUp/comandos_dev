@@ -168,8 +168,12 @@ pip install httpx
 ```python
 from concurrent.futures import ThreadPoolExecutor
 
+# Use uma função síncrona (async não roda em ThreadPool sem await)
+def baixar_sync(url):
+    return f"dados de {url}"
+
 with ThreadPoolExecutor(max_workers=4) as ex:
-    futuros = [ex.submit(baixar, url) for url in urls]
+    futuros = [ex.submit(baixar_sync, url) for url in urls]
     for f in futuros:
         print(f.result())
 ```

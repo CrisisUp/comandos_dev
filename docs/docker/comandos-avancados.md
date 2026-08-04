@@ -114,7 +114,7 @@ docker network connect red-db app1
 docker network inspect red-app
 
 # Rede com IPv6
-docker network create --ipv6 --subnet=2001:db8::/64
+docker network create --ipv6 --subnet=2001:db8::/64 minha-rede6
 ```
 
 ## 💾 Volumes e Storage Drivers
@@ -122,9 +122,8 @@ docker network create --ipv6 --subnet=2001:db8::/64
 ### Gerenciamento de storage
 
 ```bash
-# Volumes nomeados com driver
+# Volumes nomeados com driver local (padrão)
 docker volume create meu-volume --driver local
-docker volume create --driver vieux hab
 
 # Backup/restauração de volume
 docker run --rm -v meu-volume:/data:ro -v $(pwd):/backup \
@@ -139,7 +138,7 @@ docker run --rm -v meu-volume:/data -v $(pwd):/backup \
 
 ```bash
 # Bind mount com opções
-docker run -v /host:/container:ro ,nosuid,noexec app
+docker run -v /host:/container:ro,nosuid,noexec app
 
 # Mount com tipo volume e source
 docker run --mount type=volume,src=vol,dst=/data,volume-nocopy app
@@ -338,7 +337,7 @@ docker inspect ID --format '{{json .}}'
 | Netear volumes | `docker volume prune` |
 | Inspecionar | `docker inspect <id>` |
 | Compose up de serviço | `docker compose up -d db` |
-| Scan de imagem | `docker scout cve app` |
+| Scan de imagem | `docker scout cves app` |
 | Criar rede | `docker network create` |
 | Logs filtrados | `docker logs --since 1h app` |
 | Eliminar tudo | `docker system prune --all --volumes` |

@@ -52,7 +52,9 @@ Set-Location /home/usuario
 cd /home/usuario
 cd ~           # Ir para home
 cd ..          # Voltar um diretório
-cd -           # Voltar ao diretório anterior
+# Não existe "cd -" no PowerShell; use Push-Location/popd para ir e voltar
+Push-Location .\outra-pasta
+popd           # volta ao diretório anterior
 ```
 
 ## 📝 Manipulação de Arquivos
@@ -105,7 +107,7 @@ mkdir pasta
 mkdir -p pasta/subpasta/subsubpasta
 
 # Remover diretórios
-Remove-Item -ItemType Directory pasta
+Remove-Item pasta -Recurse
 rmdir pasta
 Remove-Item -Recurse -Force pasta   # Remove recursivamente
 ```
@@ -181,8 +183,8 @@ Get-ChildItem -Recurse -Filter "*.txt"
 Get-ChildItem -Recurse -Include "*.txt"
 Get-ChildItem -Recurse -Exclude "*.log"
 
-# Buscar por nome
-Get-ChildItem -Recurse -Name "*teste*"
+# Buscar por nome (o asterisco é do predicado, não da flag)
+Get-ChildItem -Recurse | Where-Object { $_.Name -like "*teste*" }
 
 # Buscar por tamanho
 Get-ChildItem -Recurse | Where-Object { $_.Length -gt 1MB }
@@ -191,7 +193,7 @@ Get-ChildItem -Recurse | Where-Object { $_.Length -gt 1MB }
 Select-String -Path "*.txt" -Pattern "texto"
 Get-ChildItem -Recurse -Include "*.txt" | Select-String -Pattern "texto"
 
-# Buscar com case insensitive
+# Buscar com case sensitive (o padrão do Select-String é case-insensitive)
 Select-String -Path "*.txt" -Pattern "texto" -CaseSensitive
 
 # Buscar comandos
@@ -263,7 +265,7 @@ Get-Process
 ps
 
 # Ver processos com detalhes
-Get-Process | Format-Table Name, CPU, MemorySize
+Get-Process | Format-Table Name, CPU, WorkingSet
 
 # Ver processos específicos
 Get-Process -Name "notepad"
@@ -486,27 +488,28 @@ Criar aliases no perfil PowerShell
 # Abrir perfil
 notepad $PROFILE
 
-# Adicionar aliases
+# Adicionar aliases (comando único) e funções (com argumentos)
 Set-Alias ll Get-ChildItem
 Set-Alias la Get-ChildItem
-Set-Alias lsd Get-ChildItem -Directory
-Set-Alias update "winget upgrade --all"
-Set-Alias clean "winget upgrade --all"
-Set-Alias mem Get-Memory
-Set-Alias disk Get-Disk
-Set-Alias psg "Get-Process | Where-Object { $_.Name -like '*$args*' }"
 Set-Alias hist Get-History
-Set-Alias tailf Get-Content -Wait
+
+# Set-Alias não aceita argumentos; use funções no perfil
+function lsd { Get-ChildItem -Directory }
+function update { winget upgrade --all }
+function clean { winget upgrade --all }
+function psg { Get-Process | Where-Object { $_.Name -like "*$args*" } }
+function tailf { Get-Content -Wait }
 ```
 
 ### Aliases para Git
 
 ```powershell
-Set-Alias gs git status
-Set-Alias ga git add
-Set-Alias gc git commit
-Set-Alias gp git push
-Set-Alias gl git log --oneline --graph --all
+# Set-Alias não aceita múltiplos argumentos; use funções no perfil
+function gs { git status }
+function ga { git add }
+function gc { git commit }
+function gp { git push }
+function gl { git log --oneline --graph --all }
 ```
 
 ## 📋 Checklist Diário

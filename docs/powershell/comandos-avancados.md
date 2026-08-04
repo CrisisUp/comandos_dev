@@ -22,8 +22,8 @@ Get-Process | Sort-Object CPU -Descending
 ### Script blocks e clausuras
 
 ```powershell
-# Script block
-$sb = { $a + $b }
+# Script block (com param() para receber argumentos nomeados)
+$sb = { param($a, $b) $a + $b }
 & $sb -a 1 -b 2
 . $sb
 
@@ -194,7 +194,7 @@ Get-Process | Format-Table -AutoSize
 Get-Process | Format-List -Property *
 Get-Process | ConvertTo-Json
 Get-Process | ConvertTo-Csv -NoTypeInformation
-Get-Process | Export-Clixml
+Get-Process | Export-Clixml -Path processos.xml
 
 # Falar de objeto
 Get-Process | Select-Object -ExpandProperty ProcessName

@@ -124,7 +124,8 @@ cargo fetch
 # Ver árvore de dependências
 cargo tree
 
-# Ver dependências desatualizadas
+# Ver dependências desatualizadas (ferramenta de terceiros)
+# cargo install cargo-outdated
 cargo outdated
 
 # Atualizar dependências
@@ -205,7 +206,7 @@ cargo doc
 # Gerar e abrir no navegador
 cargo doc --open
 
-# Documentação de dependências
+# Documentar apenas o crate atual (exclui dependências)
 cargo doc --no-deps
 ```
 
@@ -228,7 +229,7 @@ cargo clean
 # Ver manifest em forma final
 cargo metadata
 
-# Listar pessoas que editam Cargo.toml
+# Mostrar o Package ID/spec do crate
 cargo pkgid
 ```
 
