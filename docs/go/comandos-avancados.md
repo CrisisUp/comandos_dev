@@ -146,7 +146,9 @@ import _ "net/http/pprof"
 go tool pprof http://localhost:6060/debug/pprof/heap
 go tool pprof http://localhost:6060/debug/pprof/goroutine
 
-# Interativo (top, list, tree)
+# Omita o formato p/ entrar no shell interativo (top/list/tree)
+go tool pprof cpu.out
+# Saída única (não interativa):
 go tool pprof -top cpu.out
 go tool pprof -list "minhaFunc" cpu.out
 ```

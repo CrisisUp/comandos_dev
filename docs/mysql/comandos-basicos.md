@@ -58,7 +58,8 @@ REVOKE ALL PRIVILEGES ON banco.* FROM 'usuario'@'localhost';
 -- Remover usuário
 DROP USER 'usuario'@'localhost';
 
--- Recarregar privilégios
+-- Recarregar privilégios (desnecessário após GRANT/REVOKE;
+-- só útil após editar manualmente as tabelas mysql.*)
 FLUSH PRIVILEGES;
 ```
 
@@ -370,11 +371,12 @@ INSERT INTO usuarios (nome, email, idade) VALUES
     ('Carlos Lima', 'carlos@email.com', 35);
 
 -- Inserir com ON DUPLICATE KEY UPDATE
+-- (VALUES() na cláusula é deprecado no MySQL 8.0.20+; use ALIAS)
 INSERT INTO usuarios (id, nome, email) 
-VALUES (1, 'João Souza', 'joao@email.com')
+VALUES (1, 'João Souza', 'joao@email.com') AS novo
 ON DUPLICATE KEY UPDATE 
-    nome = VALUES(nome),
-    email = VALUES(email);
+    nome = novo.nome,
+    email = novo.email;
 
 -- Inserir com IGNORE (ignora erros)
 INSERT IGNORE INTO usuarios (id, nome) VALUES (1, 'Teste');
@@ -670,7 +672,8 @@ mysqldump -u usuario -p nome_banco tabela1 tabela2 > backup.sql
 # Exportar com compressão
 mysqldump -u usuario -p nome_banco | gzip > backup.sql.gz
 
-# Exportar para CSV
+# Exportar para CSV (campos com vírgula/aspas quebram a saída --batch;
+# prefira INTO OUTFILE com delimitadores explícitos)
 mysql -u usuario -p -e "SELECT * FROM usuarios" --batch --raw > usuarios.csv
 ```
 
@@ -759,7 +762,8 @@ OPTIMIZE TABLE nome_tabela;
 -- Verificar tabela
 CHECK TABLE nome_tabela;
 
--- Reparar tabela
+-- Reparar tabela (efeitivo em MyISAM; em InnoDB apenas reconstrói,
+-- mas não "repara" — use CHECK + backup/restore)
 REPAIR TABLE nome_tabela;
 ```
 

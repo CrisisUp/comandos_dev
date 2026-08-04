@@ -202,7 +202,8 @@ grep -i "texto" arquivo.txt        # Case insensitive
 grep -r "texto" ./                 # Busca recursiva
 grep -v "texto" arquivo.txt        # Exclui linhas com "texto"
 grep -n "texto" arquivo.txt        # Mostra números de linha
-grep -c "texto" arquivo.txt        # Conta ocorrências
+grep -c "texto" arquivo.txt        # Conta linhas com ocorrência (não ocorrências)
+# para contar ocorrências: grep -o "texto" arquivo.txt | wc -l
 grep -E "regex" arquivo.txt        # Usa expressão regular
 
 # Buscar comandos
@@ -377,7 +378,7 @@ df -H
 
 # Ver tamanho de diretórios
 du -sh pasta/
-du -h --max-depth=1 /  # Tamanho por diretório
+du -h --max-depth=1 /  # Tamanho por diretório (GNU; no BSD/macOS: du -h -d 1)
 
 # Ver sistema
 uname -a
